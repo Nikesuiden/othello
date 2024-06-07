@@ -14,21 +14,41 @@ const Home = () => {
     [0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
+  const directions = [
+    [0, 1],
+    [1, 1],
+    [1, 0],
+    [1, -1],
+    [0, -1],
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
+  ];
+
+  const check_directions = [
+    [0, i],
+    [0, -i],
+    [i, i],
+    [-i, -i],
+    [i, 0],
+    [-i, 0],
+    [i, -i],
+    [-i, i],
+  ]
+
   const clickHandler = (x: number, y: number) => {
     console.log(x, y);
     const newBoard = structuredClone(board);
-    const direction = [[y + 1],[y - 1], [x + 1], [x - 1]];
-
-    if (board[y + 1] !== undefined && board[y + 1][x] === 2 / turnColor) {
+    for(const dir of directions) /* 全方向を見渡す */ {
+    if (board[y + dir[0]] !== undefined && board[x + dir[1]] !== undefined && board[y + dir[0]][x + dir[1]] === 2 / turnColor)
+      /* 方向の指定 */ { 
+      for (let i:number = 0; i++;) /* 一方向に対して異なる色の先に同じ色があるか検索 */
+        {if () {};
       newBoard[y][x] = turnColor;
       setTurnColor(2 / turnColor);
-    }
-    if (board[y - 1] !== undefined && board[y - 1][x] === 2 / turnColor) {
-      newBoard[y][x] = turnColor;
-      setTurnColor(2 / turnColor);
-    }
-
-
+    };
+  };
+  };
 
     setBoard(newBoard);
   };
