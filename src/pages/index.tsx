@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styles from './index.module.css';
 
 const Home = () => {
+  const [countBlack, setCountBlack] = useState(2);
+  const [countWhite, setCountWhite] = useState(2);
   const [turnColor, setTurnColor] = useState(1);
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,7 +27,22 @@ const Home = () => {
     [-1, 1],
   ];
 
-  let countTurn = 1;
+  const upDateCounts = (board) => {
+    let blackCount = 0;
+    let whiteCount = 0;
+
+    for (let a = 0; a < 8; a++) {
+      for (let b = 0; b < 8; b++) {
+        if (board[a][b] !== 0) {
+          {board[a][b] === 1 ? blackCount += 1 : whiteCount += 1}
+      }
+    }
+  }
+
+  setCountBlack(blackCount);
+  setCountWhite(whiteCount);
+};
+
 
   const clickHandler = (x: number, y: number) => {
     console.log(`クリックした座標 -> [${x}, ${y}]`);
@@ -64,10 +81,6 @@ const Home = () => {
             }
 
             setTurnColor(2 / turnColor);
-
-            countTurn += 1;
-
-            console.log(`ターンカウント：${countTurn}`);
             break;
           }
 
@@ -81,24 +94,16 @@ const Home = () => {
         }
       }
     }
-    // let countWhite = 0;
-    // let countBlack = 0;
-    // newBoard.map((row, y) => row.map((color, x) => key={`${x}-${y}`} {color === 1 ? countBlack += 1 : countWhite += 1}))
     setBoard(newBoard);
+    upDateCounts(newBoard);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.topContainer}>
-      <div className={styles.callTurn}>
-        {turnColor === 1 ? "黒":"白" }の番です, {countTurn}ターン目
-      </div>
-      <div className={styles.countWhite}>
-
-      </div>
-      <div className={styles.countBlack}>
-
-      </div>
+        <div className={styles.callTurn}>{turnColor === 1 ? '黒' : '白'}の番です</div>
+        <div className={styles.countWhite}>白：{countWhite}</div>
+        <div className={styles.countBlack}>黒：{countBlack}</div>
       </div>
 
       <div className={styles.boardstyle}>
