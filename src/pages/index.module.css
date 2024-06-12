@@ -35,3 +35,22 @@
   border-radius: 100%;
   transform: translate(-50%, -50%);
 }
+
+.topContainer {
+
+}
+
+.callTurn {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.countWhite {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.countBlack {
+  margin: 10px;
+  font-size: 30px;
+}
