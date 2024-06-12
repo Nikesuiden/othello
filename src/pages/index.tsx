@@ -101,9 +101,10 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.topContainer}>
+        <div className={styles.countBlack}>{countBlack}</div>
         <div className={styles.callTurn}>{turnColor === 1 ? '黒' : '白'}の番です</div>
-        <div className={styles.countWhite}>白：{countWhite}</div>
-        <div className={styles.countBlack}>黒：{countBlack}</div>
+        <div className={styles.countWhite}>{countWhite}</div>
+
       </div>
 
       <div className={styles.boardstyle}>
