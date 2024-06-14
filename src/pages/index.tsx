@@ -5,6 +5,7 @@ const Home = () => {
   const [countBlack, setCountBlack] = useState(2);
   const [countWhite, setCountWhite] = useState(2);
   const [turnColor, setTurnColor] = useState(1);
+  const [suggest, setSuggest] = useState(3);
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
